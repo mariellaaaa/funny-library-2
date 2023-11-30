@@ -5,6 +5,7 @@ import {
 	createReadSvg2,
 	createDeleteSvg,
 } from "./svgCreator.js";
+import { resetForm } from "./resetForm.js";
 
 let myLibrary = [];
 let totalBooks = document.getElementById("total-books");
@@ -23,13 +24,10 @@ export function addBook(event) {
 
 	let newBook = new Book(title, author, pages, read);
 	myLibrary.push(newBook);
+
 	saveLibrary();
 	displayLibrary();
-
-	document.getElementById("title").value = "";
-	document.getElementById("author").value = "";
-	document.getElementById("pages").value = "";
-	document.getElementById("read").checked = false;
+	resetForm();
 }
 
 export function deleteAllBooks() {
@@ -58,10 +56,58 @@ function saveLibrary() {
 function loadLibrary() {
 	const savedLibrary = localStorage.getItem("myLibrary");
 	if (savedLibrary) {
-		myLibrary = JSON.parse(savedLibrary);
+		const parsedLibrary = JSON.parse(savedLibrary);
+		myLibrary = parsedLibrary.map(
+			book => new Book(book.title, book.author, book.pages, book.read)
+		);
 		displayLibrary();
 	}
 }
+
+function updateBookProperty(index, newValue, propertyName) {
+	let bookToEdit = myLibrary[index];
+	if (propertyName === "title") {
+		bookToEdit.updateTitle(newValue);
+	} else if (propertyName === "author") {
+		bookToEdit.updateAuthor(newValue);
+	} else if (propertyName === "pages") {
+		bookToEdit.updatePages(newValue);
+	}
+	saveLibrary();
+}
+
+document.addEventListener("dblclick", function (event) {
+	if (event.target.classList.contains("editable")) {
+		event.target.readOnly = false;
+	}
+});
+
+document.addEventListener(
+	"blur",
+	function (event) {
+		if (event.target.classList.contains("editable")) {
+			const propertyName = event.target.classList.contains("updatedTitle")
+				? "title"
+				: event.target.classList.contains("updatedAuthor")
+				? "author"
+				: "pages";
+
+			if (event.target.value.trim() === "") {
+				swal(`The ${propertyName} field cannot be empty.`).then(() => {
+					event.target.focus();
+				});
+			} else {
+				event.target.readOnly = true;
+				updateBookProperty(
+					event.target.dataset.index,
+					event.target.value,
+					propertyName
+				);
+			}
+		}
+	},
+	true
+);
 
 export function displayLibrary() {
 	let libraryDisplay = document.getElementById("libraryDisplay");
@@ -75,9 +121,18 @@ export function displayLibrary() {
 		bookInfo.classList.add("book-container");
 
 		bookInfo.innerHTML += `
-            <p>${book.title}</p>
-            <p>${book.author}</p>
-            <p>${book.pages}</p>
+          <div class="innerInput">
+            <input type="text" value="${book.title}" class="editable updatedTitle" data-index="${i}" readonly />
+            <label class="editLabel">Double click to edit</label> 
+          </div>
+          <div class="innerInput">
+            <input type="text" value="${book.author}" class="editable updatedAuthor" data-index="${i}" readonly />
+            <label class="editLabel">Double click to edit</label> 
+          </div>
+          <div class="innerInput">       
+            <input type="number" value="${book.pages}" class="editable updatedPages" data-index="${i}" readonly />       
+            <label class="editLabel">Double click to edit</label> 
+          </div>       
         `;
 
 		let readButton = document.createElement("button");
