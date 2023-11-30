@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Playfair+Display&family=Roboto&family=Shadows+Into+Light+Two&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.css"
+        />
+        <link rel="stylesheet" href="./styles/main.css" />
+        <title>Library</title>
+    </head>
+    <body>
+        <header class="header">
+            <h1 id="books-read">BOOKS READ:</h1>
+            <h2 id="books-unread">BOOKS UNREAD:</h2>
+            <h3 id="total-books">TOTAL BOOKS:</h3>
+            <button id="delete-all-books-button">Delete all</button>
+        </header>
+        <aside class="aside">
+            <section class="logo-section">
+                <picture>
+                    <img src="./logo.png" alt="logo image" />
+                </picture>
+                <p>LIBRARY</p>
+            </section>
+            <form id="form">
+                <label for="title">Title:</label>
+                <input
+                    class="form__input"
+                    type="text"
+                    id="title"
+                    placeholder="Huckleberry Finn"
+                    required
+                />
+
+                <label for="author">Author:</label>
+                <input
+                    class="form__input"
+                    type="text"
+                    id="author"
+                    placeholder="Mark Twain"
+                    required
+                />
+
+                <label for="pages">Pages:</label>
+                <input
+                    class="form__input"
+                    type="number"
+                    id="pages"
+                    placeholder="1234567..."
+                    required
+                />
+
+                <label for="read">Have you read this book?</label>
+                <input type="checkbox" id="read" aria-label="Book status toggler" />
+
+                <button id="add-book-button" aria-label="Add a book">
+                    Add a new book
+                </button>
+            </form>
+        </aside>
+        <main class="main">
+            <section id="books-header">
+                <p>Title</p>
+                <p>Author</p>
+                <p>Pages</p>
+                <p>Status</p>
+                <p>Removal</p>
+            </section>
+            <section id="libraryDisplay" class="grid-container"></section>
+        </main>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script type="module" src="./js/index.js"></script>
+    </body>
+</html>
