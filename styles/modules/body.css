@@ -1,170 +1,186 @@
 body {
-    display: grid;
-    background-color: #7c534c34;
-    grid-template-columns: 25% 1fr;
-    grid-template-rows: 8rem auto;
-    grid-template-areas:
-      "aside header"
-      "aside main";
-    margin: 0;
-    padding: 0;
+	display: grid;
+	background-color: #7c534c34;
+	grid-template-columns: 25% 1fr;
+	grid-template-rows: 8rem auto;
+	grid-template-areas:
+		"aside header"
+		"aside main";
+	margin: 0;
+	padding: 0;
 }
-  
+
+.editLabel {
+	margin-top: 5px;
+	color: #3d795e;
+	font-size: 11px;
+}
+
+.innerInput {
+	display: flex;
+	flex-direction: column;
+}
+
 .aside {
-    grid-area: aside;
-    background-color: #5a3d38;
-    color: #fff;
-    display: grid;
-    padding: 20px;
-    grid-template-rows: repeat(4, 1fr);
-    gap: 15px;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    min-height: auto;
+	grid-area: aside;
+	background-color: #5a3d38;
+	color: #fff;
+	display: grid;
+	padding: 20px;
+	grid-template-rows: repeat(4, 1fr);
+	gap: 15px;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	min-height: auto;
 }
-  
+
 .logo-section {
-    display: grid;
-    grid-template-columns: 30% 1fr;
-    justify-content: center;
-    align-items: center;
-    margin-top: -40px;
+	display: grid;
+	grid-template-columns: 30% 1fr;
+	justify-content: center;
+	align-items: center;
+	margin-top: -40px;
 }
-  
+
 .logo-section p {
-    font-size: 45px;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+	font-size: 45px;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
-  
+
 .aside form {
-    margin-top: 50px;
-    display: grid;
-    grid-gap: 20px;
+	margin-top: 50px;
+	display: grid;
+	grid-gap: 20px;
 }
-  
+
 .aside form label {
-    text-align: center;
+	text-align: center;
 }
-  
+
 .form__input {
-    text-align: center;
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #000000;
-    border-radius: 20px;
+	text-align: center;
+	width: 100%;
+	padding: 10px;
+	border: 2px solid #000000;
+	border-radius: 20px;
 }
-  
+
 .form__input:focus {
-    outline: 4px solid rgb(128, 255, 0);
+	outline: 4px solid rgb(128, 255, 0);
 }
-  
+
 .aside form input[type="checkbox"] {
-    height: 30px;
-    margin-right: 5px;
+	height: 30px;
+	margin-right: 5px;
 }
-  
+
 .form__input--error {
-    outline: 4px solid rgb(255, 0, 0);
+	outline: 4px solid rgb(255, 0, 0);
 }
-  
+
 .aside form button {
-    background-color: #7c534c34;
-    color: #fff;
-    padding: 10px;
-    cursor: pointer;
-    border: 2px solid #000000;
-    border-radius: 20px;
+	background-color: #7c534c34;
+	color: #fff;
+	padding: 10px;
+	cursor: pointer;
+	border: 2px solid #000000;
+	border-radius: 20px;
 }
-  
+
 .aside form button:hover {
-    background-color: #c1aeaa;
-    color: #000000;
+	background-color: #c1aeaa;
+	color: #000000;
 }
-  
+
 .header {
-    grid-area: header;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr) auto;
-    align-items: center;
-    padding: 50px;
-    background: linear-gradient(to right, #5a3d38, #aa8173, #e3cfcb);
-    color: #fff;
+	grid-area: header;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr) auto;
+	align-items: center;
+	padding: 50px;
+	background: linear-gradient(to right, #5a3d38, #aa8173, #e3cfcb);
+	color: #fff;
 }
-  
+
 .header h1,
 .header h2,
 .header h3 {
-    margin: 0;
-    font-size: 1.2em;
+	margin: 0;
+	font-size: 1.2em;
 }
-  
+
 .header button {
-    grid-column: 4;
-    background-color: #e74c3c;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.8s ease;
+	grid-column: 4;
+	background-color: #e74c3c;
+	color: #fff;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.8s ease;
 }
-  
+
 .header button:hover {
-    background-color: #c0392b;
+	background-color: #c0392b;
 }
-  
+
 .main {
-    grid-area: main;
-    padding: 4em;
+	grid-area: main;
+	padding: 4em;
 }
-  
+
 #books-header {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr) auto;
-    gap: 10px;
-    background-color: transparent;
-    border: 2px solid #000000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    color: black;
-    padding: 30px;
-    font-weight: bold;
-    border-radius: 30px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr) auto;
+	gap: 10px;
+	background-color: transparent;
+	border: 2px solid #000000;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+	color: black;
+	padding: 30px;
+	font-weight: bold;
+	border-radius: 30px;
 }
-  
+
 .book-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr) auto;
-    background-color: #eae2e0;
-    border-radius: 30px;
-    align-items: center;
-    gap: 10px;
-    padding: 30px;
-    margin-top: 5px;
-    height: auto;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr) auto;
+	background-color: #eae2e0;
+	border-radius: 30px;
+	align-items: center;
+	gap: 10px;
+	padding: 30px;
+	margin-top: 5px;
+	height: auto;
 }
-  
+
+.editable {
+	background-color: #eae2e0;
+	width: fit-content;
+}
+
 .icon-button {
-    border: none;
-    text-align: center;
-    background: none;
-    padding: 0;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
+	border: none;
+	text-align: center;
+	background: none;
+	padding: 0;
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
 }
-  
+
 @media only screen and (max-width: 600px) {
-    body {
-      display: grid;
-      background-color: #7c534c34;
-      grid-template-columns: 1fr;
-      grid-template-rows: auto auto auto;
-      grid-template-areas:
-        "aside"
-        "header"
-        "main";
-      margin: 0;
-      padding: 0;
-    }
+	body {
+		display: grid;
+		background-color: #7c534c34;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto auto;
+		grid-template-areas:
+			"aside"
+			"header"
+			"main";
+		margin: 0;
+		padding: 0;
+	}
 }
